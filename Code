@@ -1,0 +1,68 @@
+account = {
+    "pin": "1234",
+    "balance": 1000
+}
+
+# List (menu options)
+menu = ["Check Balance", "Deposit", "Withdraw", "Exit"]
+
+# Tuple (fixed info)
+bank_info = ("Welcome to ATM", "Secure Banking System")
+
+print(bank_info[0])
+print(bank_info[1])
+
+# PIN check
+attempts = 0
+
+while attempts < 3:
+    user_pin = input("Enter PIN: ")
+
+    if user_pin == account["pin"]:
+        print("Login Successful")
+
+        while True:
+            print("\n--- MENU ---")
+            
+            # Loop through list
+            for i in range(len(menu)):
+                print(i+1, menu[i])
+
+            choice = input("Enter choice: ")
+
+            # Check Balance
+            if choice == "1":
+                print("Balance:", account["balance"])
+
+            # Deposit
+            elif choice == "2":
+                amount = int(input("Enter amount: "))
+                account["balance"] = account["balance"] + amount   # operator +
+                print("Deposit Successful")
+
+            # Withdraw
+            elif choice == "3":
+                amount = int(input("Enter amount: "))
+                
+                if amount <= account["balance"]:   # operator <=
+                    account["balance"] = account["balance"] - amount   # operator -
+                    print("Withdraw Successful")
+                else:
+                    print("Insufficient Balance")
+
+            # Exit
+            elif choice == "4":
+                print("Thank you")
+                break
+
+            else:
+                print("Invalid choice")
+
+        break
+
+    else:
+        attempts = attempts + 1   # operator +
+        print("Wrong PIN")
+
+        if attempts == 3:
+            print("Account Blocked")
