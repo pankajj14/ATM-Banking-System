@@ -1,18 +1,15 @@
 account = {
     "pin": "1234",
-    "balance": 1000
+    "balance": 5000
 }
 
-# List (menu options)
 menu = ["Check Balance", "Deposit", "Withdraw", "Exit"]
 
-# Tuple (fixed info)
 bank_info = ("Welcome to ATM", "Secure Banking System")
 
 print(bank_info[0])
 print(bank_info[1])
 
-# PIN check
 attempts = 0
 
 while attempts < 3:
@@ -37,15 +34,15 @@ while attempts < 3:
             # Deposit
             elif choice == "2":
                 amount = int(input("Enter amount: "))
-                account["balance"] = account["balance"] + amount   # operator +
+                account["balance"] = account["balance"] + amount  
                 print("Deposit Successful")
 
             # Withdraw
             elif choice == "3":
                 amount = int(input("Enter amount: "))
                 
-                if amount <= account["balance"]:   # operator <=
-                    account["balance"] = account["balance"] - amount   # operator -
+                if amount <= account["balance"]:   
+                    account["balance"] = account["balance"] - amount   
                     print("Withdraw Successful")
                 else:
                     print("Insufficient Balance")
@@ -61,7 +58,7 @@ while attempts < 3:
         break
 
     else:
-        attempts = attempts + 1   # operator +
+        attempts = attempts + 1  
         print("Wrong PIN")
 
         if attempts == 3:
